@@ -6,12 +6,6 @@ function CardStudent(){
 
     const [students, setStudents] = useState([]);
 
-    const studentss = {
-        idStudent: "jlksdjflksdjfl",
-        nameStudent: "alfredo",
-        ageStudent:21
-    }
-
     const getAllStudents = async() => {
 
         axios.get(`/student`)

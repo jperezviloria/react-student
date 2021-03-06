@@ -1,20 +1,31 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {useForm} from "react-hook-form"
 import "./style.css"
 import axios from "axios"
 
 function FormStudent(){
 
+    /*
+    const initialState = {
+        nameStudent: "",
+        ageStudent: 0,
+    }
+
+    */
+
     const {register, handleSubmit} = useForm();
-    const [student, setStudent] = useState({name: "", age: ""})
+   // const [student, setStudent] = useState(initialState)
+
+   
 
     const callingSaveStudent = async (data) => {
-        console.log(data)
+        //console.log(data)
         var studentModel = {
             nameStudent : data.nameStudent,
             ageStudent : data.ageStudent
         }
         console.log(studentModel)
+        //console.log(student)
         axios.post("/student", studentModel)
         .catch(error =>{
             console.log(error)
@@ -22,13 +33,14 @@ function FormStudent(){
     }
 
     const saveStudent = (data) => {
-        //setStudent(data) Dont work
+        //console.log(student)
         callingSaveStudent(data)
     }
 
     const onSubmitInsertStudent = (data) => {
+        //setStudent(data)
         saveStudent(data)
-        setStudent({name: "", age: ""})
+        //setStudent(initialState)
     }
 
     return(
